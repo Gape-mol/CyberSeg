@@ -131,6 +131,9 @@ def clone_repo(repo):
 
 def delete_repo(path):
     shutil.rmtree(path, ignore_errors=True)
+    parent = os.path.dirname(path)
+    if os.path.isdir(parent) and not os.listdir(parent):
+        shutil.rmtree(parent, ignore_errors=True)
 
 
 def find_files(repo_path, language):
