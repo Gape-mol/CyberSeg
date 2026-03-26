@@ -1,0 +1,13 @@
+{
+  "name": "visualizer",
+  "version": "1.0.0",
+  "description": "Visualizer para el ranking de palabras del miner",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "ws": "^8.14.0"
+  }
+}

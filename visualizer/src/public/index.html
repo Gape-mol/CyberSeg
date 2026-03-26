@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Visualizer</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Visualizer</h1>
+        </header>
+
+        <section class="stats">
+            <div class="stat-box">
+                <span class="stat-label">Repositorios</span>
+                <span class="stat-value" id="stat-repos">—</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Archivos</span>
+                <span class="stat-value" id="stat-files">—</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Funciones</span>
+                <span class="stat-value" id="stat-functions">—</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Última actualización</span>
+                <span class="stat-value" id="stat-updated">—</span>
+            </div>
+        </section>
+
+        <section class="controls">
+            <div class="control-group">
+                <label for="language-select">Lenguaje</label>
+                <select id="language-select">
+                    <option value="all">Todos</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="topn-input">Top N</label>
+                <input
+                    id="topn-input"
+                    type="number"
+                    min="1"
+                    placeholder="Todos"
+                />
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <div id="chart-container"></div>
+            <div id="table-container" class="hidden"></div>
+        </section>
+
+        <script src="script.js"></script>
+    </body>
+</html>
