@@ -1,0 +1,19 @@
+services:
+  miner:
+    build: ./miner
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+    volumes:
+      - ./shared:/app/shared
+
+  visualizer:
+    build: ./visualizer
+    environment:
+      - EXTERNAL_PORT=${PORT:-8080}
+      - JSON_PATH=/app/shared/words.json
+    ports:
+      - "${PORT:-8080}:8080"
+    volumes:
+      - ./shared:/app/shared
+    depends_on:
+      - miner

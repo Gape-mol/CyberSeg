@@ -4,7 +4,7 @@ const EventEmitter = require("events");
 
 const JSON_PATH =
   process.env.JSON_PATH || path.join(__dirname, "../../shared/words.json");
-const POLL_INTERVAL_MS = parseInt(process.env.POLL_INTERVAL_MS || "2000");
+const POLL_INTERVAL_MS = 100;
 
 class Watcher extends EventEmitter {
   constructor() {

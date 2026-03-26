@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const { WebSocketServer } = require("ws");
 const watcher = require("./watcher");
+const EXTERNAL_PORT = process.env.EXTERNAL_PORT || PORT;
 
 const PORT = parseInt(process.env.PORT || "8080");
 
@@ -12,11 +13,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/api/data", (req, res) => {
   if (watcher.lastUpdated === null) {
-    return res
-      .status(503)
-      .json({
-        error: "Sin datos todavía, el miner aún no ha escrito resultados.",
-      });
+    return res.status(503).json({
+      error: "Sin datos todavía, el miner aún no ha escrito resultados.",
+    });
   }
 
   try {
@@ -54,5 +53,7 @@ watcher.on("change", (data) => {
 watcher.start();
 
 server.listen(PORT, () => {
-  console.log(`Visualizer corriendo en http://localhost:${PORT}`);
+  console.log(
+    `Visualizer corriendo en local ${PORT} y visible en http://localhost:${EXTERNAL_PORT}`,
+  );
 });
